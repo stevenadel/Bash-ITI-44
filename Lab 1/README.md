@@ -59,10 +59,11 @@ awk -F: '{ for (i=1; i<=NF; i++) { if ($i~"lp") $i="mylp" } print $0 }' /etc/pas
 ![Screenshot from 2023-11-28 15-04-28](https://github.com/stevenadel/Red-Hat-Sysadmin-ITI-44/assets/111876286/dc75ad94-868d-4a97-bd98-7d401c86ad03)
 
 ### 7- Print all information about greatest uid.
-awk -F: 'BEGIN{ max=1; } { if (max<$3) { max=$3;  line=$0 }} END { print line }' /etc/passwd
+awk -F: 'BEGIN{ max=1 } { if (max<$3) { max=$3;  line=$0 }} END { print line }' /etc/passwd
 
 ![Screenshot from 2023-11-28 15-20-56](https://github.com/stevenadel/Red-Hat-Sysadmin-ITI-44/assets/111876286/48f2e9f3-820b-42f0-a8e5-e79ecf530cb8)
 
 ### 8- Get the sum of all accounts id’s.
+awk -F: '{ sum += $3 } END { print sum }' /etc/passwd
 
-
+![Screenshot from 2023-11-28 19-55-43](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/1e211161-afd3-4161-a2bb-a10f9a744f31)
