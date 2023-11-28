@@ -1,5 +1,5 @@
 # Bash Lab 1
-### Using sed utility
+## Using sed utility
 ### 1- Display the lines that contain the word “lp” in /etc/passwd file.
 sed -n '/lp/p' /etc/passwd
 
@@ -27,7 +27,7 @@ sed 's/lp/mylp/g' /etc/passwd
 
 ---------------------------------------------------------------------------------------
 
-### Using awk utility
+## Using awk utility
 ### 1- Print full name (comment) of all users in the system.
 awk –F: ‘{print $5}’ /etc/passwd
 
