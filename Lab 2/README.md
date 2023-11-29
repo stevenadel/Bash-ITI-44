@@ -49,9 +49,79 @@ cd $*
 ### 5. Create a script called myls where:
 #### a. It lists the current directory, if it is called without arguments.
 #### b. Otherwise, it lists the given directory.
+```bash
+#!/bin/bash
+ls $*
+```
+![Screenshot from 2023-11-29 22-59-22](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/53e3fc52-ed8e-4f27-9444-fa4b5b9c6442)
+
 ### 6. Enhance the above script to support the following options individually:
 #### a. –l: list in long format
 #### b. –a: list all entries including the hiding files.
 #### c. –d: if an argument is a directory, list only its name
 #### d. –i: print inode number
 #### e. –R: recursively list subdirectories
+```bash
+#!/bin/bash
+# All this functionality already working and supported
+ls $*
+```
+![Screenshot from 2023-11-29 23-04-27](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/e4d0b7bf-e7cc-4b5a-b3e2-dd95e2adfcbd)
+
+## Bonus: enhance the above script to support the following Synopsis:
+myls -option1 –option2\
+myls –option2 –option1\
+myls –option1option2\
+myls –option2option1
+```bash
+#!/bin/bash
+# All this functionality already working and supported
+ls $*
+```
+![Screenshot from 2023-11-29 23-47-23](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/acfc2459-2613-4040-a96d-9b78c3cd8e46)
+
+### 7. Create a script called mytest where:
+#### a. It check the type of the given argument (file/directory)
+#### b. It check the permissions of the given argument (read/write/execute)
+```bash
+#!/bin/bash
+if [[ $# -ne 1 ]]
+then
+	echo "Usage: mytest.sh argument (must provide one argument only)"
+else
+	file $1
+	if [[ -r $1 ]]
+	then
+		echo "r"
+	fi
+
+	if [[ -w $1 ]]
+	then
+		echo "w"
+	fi
+
+	if [[ -x $1 ]]
+	then
+		echo "x"
+	fi
+fi
+```
+![Screenshot from 2023-11-30 00-08-39](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/15d67bc2-776f-4071-ab38-cb1fe52d55b8)
+
+### 8. Create a script called myinfo where:
+#### a. It asks the user about his/her logname.
+#### b. It print full info about files and directories in his/her home directory
+#### c. Copy his/her files and directories as much as you can in /tmp directory.
+#### d. Gets his current processes status.
+```bash
+#!/bin/bash
+read -p "Enter logname: " logname
+
+userhome=/home/$logname/
+ls -la $userhome
+
+cp -r $userhome/* /tmp 2> /dev/null
+
+ps -U $logname
+```
+![Screenshot from 2023-11-30 00-35-15](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/22b7036d-ab5f-43c3-944d-3902074fbd44)
