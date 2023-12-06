@@ -60,7 +60,6 @@ esac
 ### 3. Write a script called mychmod using for utility to give execute permission to all files and directories in your home directory.
 ```bash
 #!/bin/bash
-
 cd /home/rhel/
 for file in $(ls ~)
 do
@@ -70,11 +69,42 @@ done
 ![Screenshot from 2023-12-05 20-29-08](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/aa7c6c8c-540b-4052-8707-ae31dff9e680)
 ### 4. Write a script called mybackup using for utility to create a backup of only files in your home directory.
 ```bash
+#!/bin/bash
+cd $HOME
+if [[ ! -d backup ]]
+then
+        mkdir backup
+        echo creating backup directory in home
+else
+        echo backup folder already exists in home
+fi
+
+for file in $(ls -r)
+do
+        if [[ ! $file = backup ]]
+        then
+                cp -r $file backup/
+                echo copied $file
+        fi
+done
+```
+![Screenshot from 2023-12-06 13-16-54](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/4be61ddc-6c7c-4369-8742-1c66a3278dce)
+### 5. Write a script called mymail using for utility to send a mail to all users in the system. Note: write the mail body in a file called mtemplate.
+```bash
+#!/bin/bash
+users=`cat /etc/passwd | cut -d: -f1`
+for user in $users
+do
+        mail -s "Lab 3 Bash" $user < mtemplate
+done
+```
+![Screenshot from 2023-12-06 14-22-53](https://github.com/stevenadel/Bash-ITI-44/assets/111876286/68b9432b-3676-4566-a8ad-56882a14015e)
+### 6. Write a script called chkmail to check for new mails every 10 seconds. Note: mails are saved in /var/mail/username.
+```bash
 
 ```
-### 5. Write a script called mymail using for utility to send a mail to all users in the system. Note: write the mail body in a file called mtemplate.
-### 6. Write a script called chkmail to check for new mails every 10 seconds. Note: mails are saved in /var/mail/username.
 ### 7. What is the output of the following script
+```bash
 typeset –i n1
 typeset –i n2
 n1=1
@@ -92,12 +122,26 @@ fi
 n1=$n1+1
 print $n2
 done
+```
+```bash
+
+```
 ### 8. Create the following menu: (Using select utility then while utility)
 #### a. Press 1 to ls
 #### b. Press 2 to ls –a
 #### c. Press 3 to exit
-### 9. Write a script called myarr that ask a user how many elements he wants to enter in an array, fill the array and then print it.
-### 10.Write a script called myavg that calculate average of all numbers entered by a user. Note: use arrays
-### 11.Write a function called mysq that calculate square if its argument.
+```bash
 
-## Screenshots
+```
+### 9. Write a script called myarr that ask a user how many elements he wants to enter in an array, fill the array and then print it.
+```bash
+
+```
+### 10.Write a script called myavg that calculate average of all numbers entered by a user. Note: use arrays
+```bash
+
+```
+### 11.Write a function called mysq that calculate square if its argument.
+```bash
+
+```
